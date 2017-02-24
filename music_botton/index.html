@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<style type="text/css">
+			#music-btn{
+				width: 50px;
+				height: 50px;
+				/*background: black;*/
+				border: 5px solid pink;
+				border-radius: 50%;
+				position: fixed;
+				top:300px;
+				left:600px;
+			}
+			#music-btn:hover{
+				cursor: pointer;
+			}
+			#music-on{
+				position: absolute;
+				-webkit-animation: musicbtns 3s linear infinite;
+				animation: musicbtns 3s linear infinite;
+				
+			}
+			#music-off{
+				position: absolute;
+				-webkit-animation: musicbtns 3s linear infinite;
+				/*animation: musicbtns 3s linear infinite;*/
+				display: none;
+			}
+			
+			@-webkit-keyframes musicbtns{
+				0%{
+					-webkit-transform: rotate(0deg);
+				}
+				100%{
+					-webkit-transform: rotate(360deg);
+				}
+			}
+			@keyframes musicbtns{
+				0%{
+					transform: rotate(0deg);
+				}
+				100%{
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+	</head>
+	
+	<script type="text/javascript">
+		window.onload = function(){
+			var music_on = document.getElementById("music-on");
+			var music_off = document.getElementById("music-off");
+			var bgsound = document.getElementById("bgsound");
+			var typesound = document.getElementById("typesound");
+			
+			music_on.onclick = function(){
+				bgsound.src = "";
+				typesound.src = "";
+				music_on.style.display="none";
+				music_off.style.display="block";
+			}
+			
+			music_off.onclick = function(){
+				bgsound.src = "music/bg.mp3";
+				typesound.src = "music/type.mp3";
+				music_on.style.display = "block";
+				music_off.style.display="none";
+			}
+		}
+	</script>
+	
+	<body>
+		<div id="music-btn">
+			<img id="music-on" src="img/music_on.png"/>
+			<img id="music-off" src="img/music_off.png"/>
+		</div>
+		
+		<div id="music-first">
+			<audio id="bgsound" src="music/bg.mp3" loop="loop" preload autoplay="autoplay controls="controls"">	
+			</audio>
+		</div>
+		
+		<div id="musci-second" style="display: none;">
+			<audio  id="typesound" src="music/type.mp3" loop="loop" preload autoplay="autoplay">
+			</audio>
+		</div>
+		
+	</body>
+</html>
